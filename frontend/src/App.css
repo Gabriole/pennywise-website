@@ -1,21 +1,77 @@
+body {
+  margin: 0;
+  font-family: "Arial", sans-serif;
+  background: linear-gradient(to bottom, #f0f4f8, #ffffff);
+  color: #333;
+}
+
 .App {
-  font-family: Arial, sans-serif;
   text-align: center;
-  margin: 20px;
+  padding: 20px;
 }
 
-form {
-  margin-bottom: 20px;
+.App-header {
+  background: url("https://source.unsplash.com/1600x900/?finance,technology") no-repeat center center / cover;
+  color: white;
+  padding: 50px 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-form input,
-form select,
-form button {
+.App-header h1 {
+  margin: 0;
+  font-size: 2.5rem;
+}
+
+.transaction-form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.transaction-form select,
+.transaction-form input,
+.transaction-form button {
   margin: 5px;
   padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
 }
 
-ul {
+.transaction-form button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.transaction-form button:hover {
+  background-color: #45a049;
+}
+
+.transaction-list {
   list-style: none;
   padding: 0;
+  max-width: 600px;
+  margin: 20px auto;
+}
+
+.transaction-list li {
+  background: #ffffff;
+  border: 1px solid #ddd;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+footer {
+  margin-top: 30px;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+footer p {
+  margin: 0;
 }
