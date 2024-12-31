@@ -33,11 +33,17 @@ db.serialize(() => {
   `);
 });
 
-// Routes
+// Default root route
+app.get("/", (req, res) => {
+  res.send("Backend is running. Use /api for API access.");
+});
+
+// API root route
 app.get("/api", (req, res) => {
   res.json({ message: "Welcome to the PennyWise API!" });
 });
 
+// Get all transactions
 app.get("/api/transactions", (req, res) => {
   db.all("SELECT * FROM transactions", [], (err, rows) => {
     if (err) return res.status(500).json({ error: err.message });
@@ -45,6 +51,7 @@ app.get("/api/transactions", (req, res) => {
   });
 });
 
+// Add a new transaction
 app.post("/api/transactions", (req, res) => {
   const { type, category, amount, date } = req.body;
   db.run(
@@ -60,4 +67,10 @@ app.post("/api/transactions", (req, res) => {
   );
 });
 
+// Handle undefined routes (404)
+app.use((req, res) => {
+  res.status(404).json({ error: "Route not found" });
+});
+
+// Start the server
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
