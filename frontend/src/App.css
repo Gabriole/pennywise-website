@@ -1,9 +1,10 @@
 /* General Styles */
 body {
-  margin: 0;
-  font-family: "Arial", sans-serif;
-  background: linear-gradient(to bottom, #eaf2f8, #f8f9fa);
-  color: #333;
+    background-image: url('https://mccayduff.com/wp-content/uploads/2018/11/pay-personal-expenses-from-business.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: Arial, sans-serif;
 }
 
 /* App Container */
@@ -73,7 +74,8 @@ body {
 }
 
 .transaction-list li {
-  background: #ffffff;
+  background: #ffffff; 
+  color: #333; 
   border: 1px solid #ddd;
   margin: 10px 0;
   padding: 15px;
