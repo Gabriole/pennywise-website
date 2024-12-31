@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/pennywise-website/static/css/main.02086c40.css",
+    "main.css": "/pennywise-website/static/css/main.18142c06.css",
     "main.js": "/pennywise-website/static/js/main.3beceb07.js",
     "index.html": "/pennywise-website/index.html",
-    "main.02086c40.css.map": "/pennywise-website/static/css/main.02086c40.css.map",
+    "main.18142c06.css.map": "/pennywise-website/static/css/main.18142c06.css.map",
     "main.3beceb07.js.map": "/pennywise-website/static/js/main.3beceb07.js.map"
   },
   "entrypoints": [
-    "static/css/main.02086c40.css",
+    "static/css/main.18142c06.css",
     "static/js/main.3beceb07.js"
   ]
 }
