@@ -74,7 +74,7 @@ function App() {
         </ul>
       </main>
       <footer>
-        <p>Made with 💖 by PennyWise Team</p>
+        <p>Made with 💖 by Gabriole</p>
       </footer>
     </div>
   );
