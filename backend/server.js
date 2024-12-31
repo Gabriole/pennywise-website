@@ -9,7 +9,15 @@ app.use(cors());
 app.use(express.json());
 
 // Database setup
-const db = new sqlite3.Database(":memory:");
+const db = new sqlite3.Database('./database.sqlite', (err) => {
+  if (err) {
+    console.error('Could not connect to the database:', err.message);
+  } else {
+    console.log('Connected to the SQLite database.');
+  }
+});
+
+// Initialize the database schema
 db.serialize(() => {
   db.run(`
     CREATE TABLE transactions (
