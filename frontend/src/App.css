@@ -8,11 +8,16 @@ body {
 
 /* App Container */
 .App {
+  background-image: url('https://mccayduff.com/wp-content/uploads/2021/08/Personal-Expenses-from-Business.png');
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  color: white;
+  font-family: Arial, sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
-  padding: 20px;
+  justify-content: center;
 }
 
 /* Header */
