@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/pennywise-website/static/css/main.6dae93f7.css",
+    "main.js": "/pennywise-website/static/js/main.9ad72921.js",
+    "index.html": "/pennywise-website/index.html",
+    "main.6dae93f7.css.map": "/pennywise-website/static/css/main.6dae93f7.css.map",
+    "main.9ad72921.js.map": "/pennywise-website/static/js/main.9ad72921.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6dae93f7.css",
+    "static/js/main.9ad72921.js"
+  ]
+}

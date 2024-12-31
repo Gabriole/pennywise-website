@@ -2,7 +2,7 @@
   "name": "pennywise-frontend",
   "version": "1.0.0",
   "private": true,
-  "homepage": "https://<your-username>.github.io/<repo-name>",
+  "homepage": "https://Gabriole.github.io/pennywise-website",
   "dependencies": {
     "axios": "^0.27.2",
     "react": "^18.0.0",
@@ -16,6 +16,20 @@
     "deploy": "gh-pages -d build"
   },
   "devDependencies": {
-    "gh-pages": "^4.0.0"
+    "gh-pages": "^4.0.0",
+    "postcss-selector-parser": "^6.1.2",
+    "typescript": "^3.9.10"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
