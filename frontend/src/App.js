@@ -29,46 +29,53 @@ function App() {
 
   return (
     <div className="App">
-      <h1>PennyWise Expense Tracker</h1>
-      <form onSubmit={handleSubmit}>
-        <select
-          value={form.type}
-          onChange={(e) => setForm({ ...form, type: e.target.value })}
-          required
-        >
-          <option value="">Type</option>
-          <option value="Income">Income</option>
-          <option value="Expense">Expense</option>
-        </select>
-        <input
-          type="text"
-          placeholder="Category"
-          value={form.category}
-          onChange={(e) => setForm({ ...form, category: e.target.value })}
-          required
-        />
-        <input
-          type="number"
-          placeholder="Amount"
-          value={form.amount}
-          onChange={(e) => setForm({ ...form, amount: e.target.value })}
-          required
-        />
-        <input
-          type="date"
-          value={form.date}
-          onChange={(e) => setForm({ ...form, date: e.target.value })}
-          required
-        />
-        <button type="submit">Add Transaction</button>
-      </form>
-      <ul>
-        {transactions.map((t) => (
-          <li key={t.id}>
-            {`${t.date} - ${t.type}: ${t.category} - $${t.amount}`}
-          </li>
-        ))}
-      </ul>
+      <header className="App-header">
+        <h1>PennyWise Expense Tracker</h1>
+      </header>
+      <main>
+        <form className="transaction-form" onSubmit={handleSubmit}>
+          <select
+            value={form.type}
+            onChange={(e) => setForm({ ...form, type: e.target.value })}
+            required
+          >
+            <option value="">Type</option>
+            <option value="Income">Income</option>
+            <option value="Expense">Expense</option>
+          </select>
+          <input
+            type="text"
+            placeholder="Category"
+            value={form.category}
+            onChange={(e) => setForm({ ...form, category: e.target.value })}
+            required
+          />
+          <input
+            type="number"
+            placeholder="Amount"
+            value={form.amount}
+            onChange={(e) => setForm({ ...form, amount: e.target.value })}
+            required
+          />
+          <input
+            type="date"
+            value={form.date}
+            onChange={(e) => setForm({ ...form, date: e.target.value })}
+            required
+          />
+          <button type="submit">Add Transaction</button>
+        </form>
+        <ul className="transaction-list">
+          {transactions.map((t) => (
+            <li key={t.id}>
+              <strong>{t.type}</strong>: {t.category} - ${t.amount} ({t.date})
+            </li>
+          ))}
+        </ul>
+      </main>
+      <footer>
+        <p>Made with 💖 by PennyWise Team</p>
+      </footer>
     </div>
   );
 }
