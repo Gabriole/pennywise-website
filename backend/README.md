@@ -44,3 +44,12 @@ Follow these steps to set up the backend locally:
 1. Clone the repository:
    ```bash
    git clone https://github.com/Gabriole/pennywise-website.git
+2. Navigate to the backend directory:
+   ```bash
+   cd pennywise-website/backend
+3. Clone the repository:
+   ```bash
+   npm install
+4. Clone the repository:
+   ```bash
+   npm start
