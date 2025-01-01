@@ -38,7 +38,7 @@ Visit the [PennyWise Expense Tracker](https://gabriole.github.io/pennywise-websi
 6. Use the **Delete** button next to any transaction to remove it.
 
 
-![Screenshot_1](https://github.com/user-attachments/assets/21e80319-8dd1-462a-b6b4-595e9602c092)
+![Screenshot_1](https://github.com/user-attachments/assets/c3e31b78-5f37-4366-8e5b-9c1160284dd9)
 
 
 ## 💡 Contributing
