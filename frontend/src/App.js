@@ -53,7 +53,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1 style={{ color: "#ff5733" }}>PennyWise Expense Tracker</h1>
+        <h1 style={{ color: "#4C585B" }}>PennyWise Expense Tracker</h1>
         <p>
           Total Income: ${totals.income} | Total Expense: ${totals.expense}
         </p>
