@@ -43,13 +43,3 @@ Follow these steps to set up the frontend locally:
 5. Build the production version (optional):
    ```bash
    npm run build
-
-
-
-
-
-
-
-
-
-   
