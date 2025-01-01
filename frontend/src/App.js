@@ -62,9 +62,9 @@ function App() {
         <h1>PennyWise Expense Tracker</h1>
         <p>
           <span className="total-label">Total Income:</span>{" "}
-          <span className="total-income">${totals.income}</span> |{" "}
+          <span className="light-green-text">${totals.income}</span> |{" "}
           <span className="total-label">Total Expense:</span>{" "}
-          <span className="total-expense">${totals.expense}</span>
+          <span className="red-text">${totals.expense}</span>
         </p>
       </header>
       <main>
@@ -112,7 +112,7 @@ function App() {
         </ul>
       </main>
       <footer>
-        <p>Made with 💖 by Ismail Mouhtaram</p>
+        <p>Made with 💖 by <span className="black-text">Ismail Mouhtaram</span></p>
         <div className="social-buttons">
           <a href="https://x.com/IsmailMouhtaram" target="_blank" rel="noopener noreferrer" className="social-button">
             Twitter
