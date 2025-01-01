@@ -9,9 +9,6 @@ body {
 
 /* App Container */
 .App {
-  background-image: url("https://mccayduff.com/wp-content/uploads/2021/08/Personal-Expenses-from-Business.png");
-  background-size: cover;
-  background-position: center;
   min-height: 100vh;
   color: white;
   font-family: Arial, sans-serif;
@@ -23,27 +20,32 @@ body {
 
 /* Header */
 .App-header {
-  background: url("https://source.unsplash.com/1600x900/?money,finance") no-repeat center center / cover;
-  color: white;
+  background: rgba(0, 0, 0, 0.5);
   padding: 50px 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   text-align: center;
 }
 
 .App-header h1 {
   margin: 0;
   font-size: 2.8rem;
-  text-shadow: 1px 1px 4px #000;
-  color: #4C585B; /* Updated color for the title */
+  color: #4C585B; /* Updated title color */
 }
 
 .App-header p {
-  margin: 10px 0 0;
+  margin: 10px 0;
   font-size: 1.2rem;
 }
 
-.silver-text {
-  color: silver;
+.total-label {
+  color: #333; /* Dark color for labels */
+}
+
+.total-income {
+  color: green; /* Green for income */
+}
+
+.total-expense {
+  color: red; /* Red for expense */
 }
 
 /* Form */
@@ -92,7 +94,6 @@ body {
   padding: 15px;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  text-align: left;
 }
 
 .delete-button {
@@ -102,7 +103,6 @@ body {
   border-radius: 5px;
   padding: 5px 10px;
   cursor: pointer;
-  margin-left: 10px;
 }
 
 .delete-button:hover {
@@ -113,12 +113,7 @@ body {
 footer {
   margin-top: 40px;
   font-size: 0.9rem;
-  color: #666;
   text-align: center;
-}
-
-footer p {
-  margin: 10px 0;
 }
 
 .social-buttons {
@@ -137,18 +132,4 @@ footer p {
 
 .social-button:hover {
   background-color: #0056b3;
-}
-
-/* Media Queries for Responsiveness */
-@media (max-width: 768px) {
-  .transaction-form input,
-  .transaction-form select,
-  .transaction-form button {
-    width: 100%;
-    margin: 10px 0;
-  }
-
-  .transaction-list li {
-    text-align: center;
-  }
 }
