@@ -112,7 +112,7 @@ function App() {
         </ul>
       </main>
       <footer>
-        <p>Made with 💖 by <span className="black-text">Ismail Mouhtaram</span></p>
+        <p className="black-text">Made with 💖 by Ismail Mouhtaram</p>
         <div className="social-buttons">
           <a href="https://x.com/IsmailMouhtaram" target="_blank" rel="noopener noreferrer" className="social-button">
             Twitter
