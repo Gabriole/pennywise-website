@@ -1,8 +1,3 @@
-
----
-
-### **Backend README.md**
-
 # PennyWise Expense Tracker - Backend
 
 ---
