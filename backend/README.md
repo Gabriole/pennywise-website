@@ -3,7 +3,6 @@
 
 ### **Backend README.md**
 
-```markdown
 # PennyWise Expense Tracker - Backend
 
 ---
