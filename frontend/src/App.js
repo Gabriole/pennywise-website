@@ -12,6 +12,7 @@ function App() {
     amount: "",
     date: "",
   });
+
   const [totals, setTotals] = useState({ income: 0, expense: 0 });
 
   useEffect(() => {
@@ -22,12 +23,17 @@ function App() {
   }, []);
 
   const calculateTotals = (transactions) => {
-    const income = transactions
-      .filter((t) => t.type === "Income")
-      .reduce((acc, t) => acc + parseFloat(t.amount), 0);
-    const expense = transactions
-      .filter((t) => t.type === "Expense")
-      .reduce((acc, t) => acc + parseFloat(t.amount), 0);
+    let income = 0;
+    let expense = 0;
+
+    transactions.forEach((t) => {
+      if (t.type === "Income") {
+        income += parseFloat(t.amount);
+      } else if (t.type === "Expense") {
+        expense += parseFloat(t.amount);
+      }
+    });
+
     setTotals({ income, expense });
   };
 
@@ -53,9 +59,9 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1 style={{ color: "#4C585B" }}>PennyWise Expense Tracker</h1>
+        <h1>PennyWise Expense Tracker</h1>
         <p>
-          Total Income: ${totals.income} | Total Expense: ${totals.expense}
+          Total Income: <span className="silver-text">${totals.income}</span> | Total Expense: <span className="silver-text">${totals.expense}</span>
         </p>
       </header>
       <main>
@@ -94,11 +100,8 @@ function App() {
         <ul className="transaction-list">
           {transactions.map((t) => (
             <li key={t.id}>
-              <strong>{t.type}</strong>: {t.category} - ${t.amount} ({t.date})
-              <button
-                className="delete-button"
-                onClick={() => handleDelete(t.id)}
-              >
+              <strong>{t.type}</strong>: {t.category} - ${t.amount} ({t.date}){" "}
+              <button className="delete-button" onClick={() => handleDelete(t.id)}>
                 Delete
               </button>
             </li>
@@ -106,7 +109,18 @@ function App() {
         </ul>
       </main>
       <footer>
-        <p>Made with 💖 by Gabriole</p>
+        <p>Made with 💖 by Ismail Mouhtaram</p>
+        <div className="social-buttons">
+          <a href="https://x.com/IsmailMouhtaram" target="_blank" rel="noopener noreferrer" className="social-button">
+            Twitter
+          </a>
+          <a href="https://github.com/Gabriole" target="_blank" rel="noopener noreferrer" className="social-button">
+            GitHub
+          </a>
+          <a href="https://github.com/Gabriole/pennywise-website" target="_blank" rel="noopener noreferrer" className="social-button">
+            Repo
+          </a>
+        </div>
       </footer>
     </div>
   );
