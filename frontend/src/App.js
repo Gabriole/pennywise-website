@@ -61,7 +61,10 @@ function App() {
       <header className="App-header">
         <h1>PennyWise Expense Tracker</h1>
         <p>
-          Total Income: <span className="silver-text">${totals.income}</span> | Total Expense: <span className="silver-text">${totals.expense}</span>
+          <span className="total-label">Total Income:</span>{" "}
+          <span className="total-income">${totals.income}</span> |{" "}
+          <span className="total-label">Total Expense:</span>{" "}
+          <span className="total-expense">${totals.expense}</span>
         </p>
       </header>
       <main>
