@@ -20,9 +20,10 @@ body {
 
 /* Header */
 .App-header {
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.3); /* Transparent rectangle */
   padding: 50px 20px;
   text-align: center;
+  border-radius: 10px;
 }
 
 .App-header h1 {
@@ -40,12 +41,16 @@ body {
   color: #333; /* Dark color for labels */
 }
 
-.total-income {
-  color: green; /* Green for income */
+.light-green-text {
+  color: lightgreen; /* Light green for income */
 }
 
-.total-expense {
+.red-text {
   color: red; /* Red for expense */
+}
+
+.black-text {
+  color: black; /* Black for footer text */
 }
 
 /* Form */
@@ -114,6 +119,7 @@ footer {
   margin-top: 40px;
   font-size: 0.9rem;
   text-align: center;
+  background: transparent; /* Transparent rectangle */
 }
 
 .social-buttons {
