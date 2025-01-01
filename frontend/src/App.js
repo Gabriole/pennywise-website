@@ -1,141 +1,132 @@
-/* General Styles */
-body {
-  background-image: url("https://mccayduff.com/wp-content/uploads/2018/11/pay-personal-expenses-from-business.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  font-family: Arial, sans-serif;
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import "./App.css";
+
+const API_URL = "https://pennywise-website.onrender.com/api";
+
+function App() {
+  const [transactions, setTransactions] = useState([]);
+  const [form, setForm] = useState({
+    type: "",
+    category: "",
+    amount: "",
+    date: "",
+  });
+
+  const [totals, setTotals] = useState({ income: 0, expense: 0 });
+
+  useEffect(() => {
+    axios.get(`${API_URL}/transactions`).then((response) => {
+      setTransactions(response.data);
+      calculateTotals(response.data);
+    });
+  }, []);
+
+  const calculateTotals = (transactions) => {
+    let income = 0;
+    let expense = 0;
+
+    transactions.forEach((t) => {
+      if (t.type === "Income") {
+        income += parseFloat(t.amount);
+      } else if (t.type === "Expense") {
+        expense += parseFloat(t.amount);
+      }
+    });
+
+    setTotals({ income, expense });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    axios.post(`${API_URL}/transactions`, form).then((response) => {
+      const newTransaction = { ...form, id: response.data.id };
+      const updatedTransactions = [...transactions, newTransaction];
+      setTransactions(updatedTransactions);
+      calculateTotals(updatedTransactions);
+      setForm({ type: "", category: "", amount: "", date: "" });
+    });
+  };
+
+  const handleDelete = (id) => {
+    axios.delete(`${API_URL}/transactions/${id}`).then(() => {
+      const updatedTransactions = transactions.filter((t) => t.id !== id);
+      setTransactions(updatedTransactions);
+      calculateTotals(updatedTransactions);
+    });
+  };
+
+  return (
+    <div className="App">
+      <header className="App-header">
+        <h1>PennyWise Expense Tracker</h1>
+        <p>
+          <span className="total-label">Total Income:</span>{" "}
+          <span className="light-green-text">${totals.income}</span> |{" "}
+          <span className="total-label">Total Expense:</span>{" "}
+          <span className="red-text">${totals.expense}</span>
+        </p>
+      </header>
+      <main>
+        <form className="transaction-form" onSubmit={handleSubmit}>
+          <select
+            value={form.type}
+            onChange={(e) => setForm({ ...form, type: e.target.value })}
+            required
+          >
+            <option value="">Type</option>
+            <option value="Income">Income</option>
+            <option value="Expense">Expense</option>
+          </select>
+          <input
+            type="text"
+            placeholder="Category"
+            value={form.category}
+            onChange={(e) => setForm({ ...form, category: e.target.value })}
+            required
+          />
+          <input
+            type="number"
+            placeholder="Amount"
+            value={form.amount}
+            onChange={(e) => setForm({ ...form, amount: e.target.value })}
+            required
+          />
+          <input
+            type="date"
+            value={form.date}
+            onChange={(e) => setForm({ ...form, date: e.target.value })}
+            required
+          />
+          <button type="submit">Add Transaction</button>
+        </form>
+        <ul className="transaction-list">
+          {transactions.map((t) => (
+            <li key={t.id}>
+              <strong>{t.type}</strong>: {t.category} - ${t.amount} ({t.date}){" "}
+              <button className="delete-button" onClick={() => handleDelete(t.id)}>
+                Delete
+              </button>
+            </li>
+          ))}
+        </ul>
+      </main>
+      <footer>
+        <p>Made with 💖 by <span className="black-text">Ismail Mouhtaram</span></p>
+        <div className="social-buttons">
+          <a href="https://x.com/IsmailMouhtaram" target="_blank" rel="noopener noreferrer" className="social-button">
+            Twitter
+          </a>
+          <a href="https://github.com/Gabriole" target="_blank" rel="noopener noreferrer" className="social-button">
+            GitHub
+          </a>
+          <a href="https://github.com/Gabriole/pennywise-website" target="_blank" rel="noopener noreferrer" className="social-button">
+            Repo
+          </a>
+        </div>
+      </footer>
+    </div>
+  );
 }
 
-/* App Container */
-.App {
-  min-height: 100vh;
-  color: white;
-  font-family: Arial, sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Header */
-.App-header {
-  background: rgba(0, 0, 0, 0.3); /* Transparent rectangle */
-  padding: 50px 20px;
-  text-align: center;
-  border-radius: 10px;
-}
-
-.App-header h1 {
-  margin: 0;
-  font-size: 2.8rem;
-  color: #4C585B; /* Updated title color */
-}
-
-.App-header p {
-  margin: 10px 0;
-  font-size: 1.2rem;
-}
-
-.total-label {
-  color: #333; /* Dark color for labels */
-}
-
-.light-green-text {
-  color: lightgreen; /* Light green for income */
-}
-
-.red-text {
-  color: red; /* Red for expense */
-}
-
-.black-text {
-  color: black; /* Black for footer text */
-}
-
-/* Form */
-.transaction-form {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin: 20px 0;
-}
-
-.transaction-form select,
-.transaction-form input,
-.transaction-form button {
-  margin: 5px;
-  padding: 10px;
-  font-size: 1rem;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-}
-
-.transaction-form button {
-  background-color: #4caf50;
-  color: white;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.transaction-form button:hover {
-  background-color: #45a049;
-}
-
-/* Transaction List */
-.transaction-list {
-  list-style: none;
-  padding: 0;
-  max-width: 600px;
-  margin: 20px auto;
-}
-
-.transaction-list li {
-  background: #ffffff;
-  color: #333;
-  border: 1px solid #ddd;
-  margin: 10px 0;
-  padding: 15px;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.delete-button {
-  background: #e74c3c;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  padding: 5px 10px;
-  cursor: pointer;
-}
-
-.delete-button:hover {
-  background: #c0392b;
-}
-
-/* Footer */
-footer {
-  margin-top: 40px;
-  font-size: 0.9rem;
-  text-align: center;
-  background: transparent; /* Transparent rectangle */
-}
-
-.social-buttons {
-  margin-top: 10px;
-}
-
-.social-button {
-  text-decoration: none;
-  margin: 0 10px;
-  padding: 10px 15px;
-  border-radius: 5px;
-  color: white;
-  background-color: #007bff;
-  transition: background-color 0.3s;
-}
-
-.social-button:hover {
-  background-color: #0056b3;
-}
+export default App;
