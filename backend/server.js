@@ -67,6 +67,18 @@ app.post("/api/transactions", (req, res) => {
   );
 });
 
+// Delete a transaction
+app.delete("/api/transactions/:id", (req, res) => {
+  const { id } = req.params;
+  db.run("DELETE FROM transactions WHERE id = ?", id, function (err) {
+    if (err) {
+      console.error("Error deleting data:", err.message);
+      return res.status(500).json({ error: err.message });
+    }
+    res.json({ message: "Transaction deleted" });
+  });
+});
+
 // Handle undefined routes (404)
 app.use((req, res) => {
   res.status(404).json({ error: "Route not found" });
